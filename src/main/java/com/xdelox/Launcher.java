@@ -8,7 +8,7 @@ public class Launcher {
 
         service.deleteDatabase();
         //service.fillDatabase();
-        //service.fillDatabase();
+        service.fillDatabase();
         service.fillDatabase();
         service.addLabelsToNodes();
     }

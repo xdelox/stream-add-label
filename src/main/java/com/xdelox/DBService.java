@@ -39,26 +39,17 @@ public class DBService {
         executeWriteQuery(query, Map.of());
     }
 
+    private void updateRecordById(int id) {
+        Map<String, Object> params = new HashMap<>();
+        params.put("id", id);
+        String query = "MATCH (n) where ID(n)=$id set n :NewLabel return n";
+        System.out.println("Updating node with id: " + params.get("id"));
+        executeWriteQuery(query, params);
+    }
+
     private void executeWriteQuery(String query, Map<String, Object> params){
         try (Session session = driver.session()) {
             session.writeTransaction(tx -> tx.run(query, params));
         }
-    }
-
-    private void updateRecordById(int id) {
-
-        try (Session session2 = driver.session()) {
-            session2.writeTransaction(txw ->
-            {
-                Map<String, Object> params = new HashMap<>();
-                params.put("id", id);
-                String query = "MATCH (n) where ID(n)=$id set n :NewLabel return n";
-                System.out.println("Updating node with id: " + params.get("id"));
-                final Result result = txw.run(query, params);
-                txw.commit();
-                return result;
-            });
-        }
-
     }
 }
