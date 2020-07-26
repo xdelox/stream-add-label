@@ -32,7 +32,8 @@ public class DBService {
     }
 
     public void deleteDatabase() {
-        executeWriteQuery("MATCH (n) DETACH DELETE n");
+        executeWriteQuery("MATCH (n:MyLabel) DETACH DELETE n");
+        executeWriteQuery("MATCH (n:NewLabel) DETACH DELETE n");
     }
 
     private void executeWriteQuery(String query){
