@@ -9,11 +9,11 @@ public class Launcher {
 
         List<String> commands = Arrays.asList(args);
 
-        if (commands.contains("refill")) {
-            System.out.println("Cleaning and filling DB");
-            service.deleteDatabase();
-            service.fillDatabase();
-        }
+//        if (commands.contains("refill")) {
+//            System.out.println("Cleaning and filling DB");
+//       service.deleteDatabase();
+        service.fillDatabase();
+//        }
         service.addLabelsToNodes();
     }
 
