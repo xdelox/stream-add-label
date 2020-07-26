@@ -18,12 +18,13 @@ public class DBService {
                 result
                         .forEachRemaining((e) ->
                                 executor.submit(() ->
-                                        updateRecord(e.get(0).asInt())
+                                        updateRecordById(e.get(0).asInt())
                                 ));
                 return result;
             });
 
         }
+        return;
     }
 
     public void fillDatabase(){
@@ -44,7 +45,7 @@ public class DBService {
         }
     }
 
-    private void updateRecord(int id) {
+    private void updateRecordById(int id) {
 
         try (Session session2 = driver.session()) {
             session2.writeTransaction(txw ->

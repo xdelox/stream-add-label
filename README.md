@@ -1,4 +1,4 @@
-# stream-add-label
+# Neo4j - Add label to a node in a stream
 
 ## Prerequisite
 

@@ -1,7 +1,5 @@
 package com.xdelox;
 
-import com.xdelox.DBService;
-
 public class Launcher {
 
     private static final DBService service = new DBService();
