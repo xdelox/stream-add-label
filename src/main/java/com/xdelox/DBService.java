@@ -1,3 +1,4 @@
+package com.xdelox;
 
 import org.neo4j.driver.*;
 
@@ -34,8 +35,12 @@ public class DBService {
     }
 
     private void executeWriteQuery(String query){
+        executeWriteQuery(query, Map.of());
+    }
+
+    private void executeWriteQuery(String query, Map<String, Object> params){
         try (Session session = driver.session()) {
-            session.writeTransaction(tx -> tx.run(query));
+            session.writeTransaction(tx -> tx.run(query, params));
         }
     }
 
