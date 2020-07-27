@@ -8,8 +8,12 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class DBService {
-    final Driver driver = GraphDatabase.driver("bolt://localhost:7687", AuthTokens.basic("neo4j", "password"));
-    final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private final Driver driver;
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+
+    public DBService(Driver driver) {
+        this.driver = driver;
+    }
 
     public void addLabelsToNodes() {
         try (Session session = driver.session()) {
